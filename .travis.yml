@@ -1,0 +1,27 @@
+sudo: required
+services:
+   - docker
+
+before_install:
+   - docker build -t kwilsonie/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+   - docker run kwilsonie/fib npm test --  --coverage 
+
+after_sucess:
+   - docker build -t kwilsonie/fib-client ./client
+   - docker build -t kwilsonie/fib-server ./server
+   - docker build -t kwilsonie/fib-nginx ./nginx
+   - docker build -t kwilsonie/fib-worker ./worker
+
+# Log in to docker CLIU
+   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
+
+# Takes those images and push them to docker hub
+   - docker push kwilsonie/fib-client
+   - docker push kwilsonie/fib-server
+   - docker push kwilsonie/fib-nginx
+   - docker push kwilsonie/fib-worker
+   
+
+
