@@ -5,23 +5,27 @@
 			"name": "client",
 			"image": "kwilsonie/fib-client",
 			"hostname": "client",
+			"memory": 128,
 			"essential": false			
 		},
 		{
 			"name": "server",
 			"image": "kwilsonie/fib-server",
 			"hostname": "api",
+			"memory": 128,
 			"essential": false			
 		},
 		{
 			"name": "worker",
 			"image": "kwilsonie/fib-worker",
+			"memory": 128,
 			"essential": false			
 		},
 		{
 			"name": "nginx",
 			"image": "kwilsonie/fib-nginx",
 			"essential": true,
+			"memory": 128,
 			"portMappings": [
 				{
 					"hostPort": 80,
