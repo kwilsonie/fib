@@ -24,5 +24,15 @@ after_sucess:
    - docker push kwilsonie/fib-nginx
    - docker push kwilsonie/fib-worker
    
-
-
+deploy:
+   edge: true
+   provider: elasticbeanstalk 
+   region: eu-west-1
+   app: fib-docker
+   env: FibDocker-env-1
+   bucket_name: elasticbeanstalk-eu-west-1-071485204010
+   bucket_path: docker-fib
+   on:
+      branch: master
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key: $AWS_SECRET_KEY
