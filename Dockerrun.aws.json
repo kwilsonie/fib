@@ -2,13 +2,6 @@
 	"AWSEBDockerrunVersion": 2,
 	"containerDefinitions": [
 		{
-			"name": "client",
-			"image": "kwilsonie/fib-client",
-			"hostname": "client",
-			"memory": 128,
-			"essential": false			
-		},
-		{
 			"name": "server",
 			"image": "kwilsonie/fib-server",
 			"hostname": "api",
