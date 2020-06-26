@@ -1,2 +1,2 @@
-FROM nginx:1.18-alpine 
+FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/
